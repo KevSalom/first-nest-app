@@ -31,4 +31,22 @@ export class TasksService {
             }
         ]
     }
+
+    createTask() {
+        return 'Creando una tarea'
+    }
+
+    updateTask() {  
+        return 'Actualizando una tarea'
+    }
+
+    deleteTask() {
+        return 'Eliminando una tarea'
+    }   
+
+    updateStatusTask() {
+        return 'Actualizando el estado de una tarea'
+    }
+
+
 }   
