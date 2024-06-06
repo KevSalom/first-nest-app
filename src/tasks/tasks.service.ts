@@ -1,9 +1,18 @@
 import {Injectable} from '@nestjs/common'
 
+export interface Tasks {
+    id: number,
+    title: string,
+    description: string,
+    status: string,
+    createdAt: Date,
+    updatedAt: Date
+}   
+
 @Injectable()
 export class TasksService {
 
-    getTasks() {
+    getTasks():Tasks[] {
         return [
             {
                 id: 1,                

@@ -1,5 +1,7 @@
-import { Controller, Delete, Get, Patch, Post, Put } from '@nestjs/common';
+import { Controller, Delete, Get, Patch, Post, Put, Req, Res } from '@nestjs/common';
+import { Request, Response } from 'express';
 import { TasksService } from './tasks.service';
+import { request } from 'http';
 
 @Controller('tasks')
 export class TasksController {
@@ -10,8 +12,10 @@ export class TasksController {
     }
 
     @Get()
-    getTasks() {
-        return this.tasksService.getTasks();
+    getTasks(@Res() response: Response, @Req() request: Request) {
+         console.log(request.url);
+         response.status(200).send(this.tasksService.getTasks());
+         return 
     }
 
     @Post()
