@@ -9,14 +9,14 @@ import {
   Post,
   Put,
   Query,
-  RawBody,
-  Req,
-  Res,
+  Res
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { TasksService } from './tasks.service';
 import { request } from 'http';
 import { parse } from 'path';
+import { CreateTasksDto } from './dto/create-tasks.dto';
+import { UpdateTasksDto } from './dto/update-tasks.dto';
 
 @Controller('tasks')
 export class TasksController {
@@ -43,8 +43,8 @@ export class TasksController {
   }
 
   @Post()
-  createTask(@Body() body: any) {
-    console.log(body);
+  createTask(@Body() body: CreateTasksDto) {
+    console.log(body.status);
     return this.tasksService.createTask(body);
   }
 
@@ -54,8 +54,8 @@ export class TasksController {
   }
 
   @Put()
-  updateTask() {
-    return this.tasksService.updateTask();
+  updateTask(@Body() body: UpdateTasksDto) {
+    return this.tasksService.updateTask(body);
   }
 
   @Patch()

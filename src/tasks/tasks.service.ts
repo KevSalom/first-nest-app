@@ -1,4 +1,5 @@
 import {Injectable, NotFoundException} from '@nestjs/common'
+import { UpdateTasksDto } from './dto/update-tasks.dto';
 
 export interface Tasks {
     title: string;
@@ -42,7 +43,7 @@ export class TasksService {
         return task
     }
 
-    updateTask() {  
+    updateTask(body: UpdateTasksDto) {  
         return 'Actualizando una tarea'
     }
 
