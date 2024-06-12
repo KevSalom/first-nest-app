@@ -19,6 +19,7 @@ import { request } from 'http';
 import { parse } from 'path';
 import { CreateTasksDto } from './dto/create-tasks.dto';
 import { UpdateTasksDto } from './dto/update-tasks.dto';
+import { TicketPipe } from './pipe/ticket/ticket.pipe';
 
 @Controller('tasks')
 export class TasksController {
@@ -35,6 +36,16 @@ export class TasksController {
     return;
   }
 
+  @Get('/ticket')
+  getPersonalTicket(@Query(TicketPipe) query : {name: string, num: number}) {
+    return 'Your ticket is ' + (query.num + 3) + ' and your name is ' + query.name;
+  }
+  
+  @Get('/ticket/:num')
+  getTickets(@Param('num', ParseIntPipe) num: number) {
+    return num + 23;
+  }
+
   @Get('/:id')
   getTask(@Param('id') id: string) {
     const task = this.tasksService.getTask(parseInt(id));
@@ -42,11 +53,6 @@ export class TasksController {
       return new NotFoundException(`Task with id ${id} not found`);
     }
     return task;
-  }
-
-  @Get('ticket/:num')
-  getTickets(@Param('num', ParseIntPipe) num: number) {
-    return num + 23;
   }
 
   @Post()

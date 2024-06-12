@@ -1,4 +1,4 @@
-import { IsBoolean, IsNotEmpty, IsString, MinLength } from "class-validator";
+import { IsBoolean, IsNotEmpty, IsNumber, IsString, MinLength } from "class-validator";
 
 
 export class CreateTasksDto {
