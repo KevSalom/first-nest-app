@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  HttpCode,
   NotFoundException,
   Param,
   Patch,
@@ -43,8 +44,8 @@ export class TasksController {
   }
 
   @Post()
+  @HttpCode(201)
   createTask(@Body() body: CreateTasksDto) {
-    console.log(body.status);
     return this.tasksService.createTask(body);
   }
 
