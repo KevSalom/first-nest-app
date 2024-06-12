@@ -6,6 +6,7 @@ import {
   HttpCode,
   NotFoundException,
   Param,
+  ParseIntPipe,
   Patch,
   Post,
   Put,
@@ -41,6 +42,11 @@ export class TasksController {
       return new NotFoundException(`Task with id ${id} not found`);
     }
     return task;
+  }
+
+  @Get('ticket/:num')
+  getTickets(@Param('num', ParseIntPipe) num: number) {
+    return num + 23;
   }
 
   @Post()
