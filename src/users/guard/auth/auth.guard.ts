@@ -15,7 +15,6 @@ export class AuthGuard implements CanActivate {
     }
 
     if (request.query.name && request.query.age) {
-      console.log(request.originalUrl);
       return true;
     }
     return false;
